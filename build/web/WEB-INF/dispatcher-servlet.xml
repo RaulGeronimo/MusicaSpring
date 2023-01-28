@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!-- SE CREAN REFERENCIAS CON EL NOMBRE DE BEAN-->
+                <prop key="index.htm">indexController</prop>
+                
+                <prop key="altaArtista.htm">artistaBean</prop>
+                <prop key="listaArtista.htm">artistaBean</prop>
+                <prop key="editarArtista.htm">artistaBean</prop>
+                <prop key="eliminarArtista.htm">artistaBean</prop>
+                <prop key="GeneraQRArtista.htm">artistaBean</prop>
+                <prop key="QrVistaArtista.htm">artistaBean</prop>
+                <prop key="PDFArtista.htm">artistaBean</prop>
+                <prop key="altaArtistaMuerto.htm">artistaBean</prop>
+                <prop key="editarArtistaTieso.htm">artistaBean</prop>
+                
+                
+                
+                <prop key="altaAlbum.htm">albumBean</prop>
+                <prop key="listaAlbum.htm">albumBean</prop>
+                <prop key="editarAlbum.htm">albumBean</prop>
+                <prop key="eliminarAlbum.htm">albumBean</prop>
+                <prop key="GeneraQRAlbum.htm">albumBean</prop>
+                <prop key="QrVistaAlbum.htm">albumBean</prop>
+                <prop key="PDFAlbum.htm">albumBean</prop>
+                
+                <prop key="altaDisquera.htm">disqueraBean</prop>
+                <prop key="listaDisquera.htm">disqueraBean</prop>
+                <prop key="editarDisquera.htm">disqueraBean</prop>
+                <prop key="eliminarDisquera.htm">disqueraBean</prop>
+                <prop key="GeneraQRDisquera.htm">disqueraBean</prop>
+                <prop key="QrVistaDisquera.htm">disqueraBean</prop>
+                <prop key="PDFDisquera.htm">disqueraBean</prop>
+                
+                <prop key="altaGrupo.htm">grupoBean</prop>
+                <prop key="listaGrupo.htm">grupoBean</prop>
+                <prop key="editarGrupo.htm">grupoBean</prop>
+                <prop key="eliminarGrupo.htm">grupoBean</prop>
+                <prop key="GeneraQRGrupo.htm">grupoBean</prop>
+                <prop key="QrVistaGrupo.htm">grupoBean</prop>
+                <prop key="PDFGrupo.htm">grupoBean</prop>
+                
+                <prop key="altaCancion.htm">cancionBean</prop>
+                <prop key="listaCancion.htm">cancionBean</prop>
+                <prop key="editarCancion.htm">cancionBean</prop>
+                <prop key="eliminarCancion.htm">cancionBean</prop>
+                <prop key="GeneraQRCancion.htm">cancionBean</prop>
+                <prop key="QrVistaCancion.htm">cancionBean</prop>
+                
+                <prop key="listaAuditoriaArtista.htm">auditoriaArtistaBean</prop>
+                <prop key="listaAuditoriaAlbum.htm">auditoriaAlbumBean</prop>
+                <prop key="listaAuditoriaDisquera.htm">auditoriaDisqueraBean</prop>
+                <prop key="listaAuditoriaGrupo.htm">auditoriaGrupoBean</prop>
+                <prop key="listaAuditoriaCancion.htm">auditoriaCancionBean</prop>
+                
+                <prop key="altaUsuario.htm">usuarioBean</prop>
+                <prop key="editarUsuario.htm">usuarioBean</prop>
+                <prop key="login.htm">usuarioBean</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="artistaBean" class="controller.controladorArtista"/>
+    <bean name="auditoriaArtistaBean" class="controller.controladorAuditoriaArtista"/>
+    
+    <bean name="albumBean" class="controller.controladorAlbum"/>
+    <bean name="auditoriaAlbumBean" class="controller.controladorAuditoriaAlbum"/>
+    
+    <bean name="disqueraBean" class="controller.controladorDisquera"/>
+    <bean name="auditoriaDisqueraBean" class="controller.controladorAuditoriaDisquera"/>
+    
+    <bean name="grupoBean" class="controller.controladorGrupo"/>
+    <bean name="auditoriaGrupoBean" class="controller.controladorAuditoriaGrupo"/>
+    
+    <bean name="cancionBean" class="controller.controladorCanciones"/>
+    <bean name="auditoriaCancionBean" class="controller.controladorAuditoriaCanciones"/>
+    
+    <bean name="usuarioBean" class="controller.controladorUsuario"/>
+    
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+</beans>
