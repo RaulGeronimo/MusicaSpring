@@ -146,7 +146,7 @@ public class controladorGrupo {
     @RequestMapping(value = "GeneraQRGrupo.htm", method = RequestMethod.GET)
     public ModelAndView qr(HttpServletRequest request) throws WriterException, FileNotFoundException, IOException, InterruptedException {
         //Se Extrae la imagen desde la ubicacion desde el disco local "C:"
-        File fichero = new File("C:\\Users\\hp\\Desktop\\Musica Servidor\\MusicaSpring\\web\\img\\QR.png");
+        File fichero = new File("C:\\Users\\raul0\\Documents\\NetBeansProjects\\Spring\\Musica Servidor\\MusicaSpring\\web\\img\\QR.png");
 
         //GRUPO
         idGrupo = Integer.parseInt(request.getParameter("idGrupo"));

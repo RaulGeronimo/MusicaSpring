@@ -151,7 +151,7 @@ public class controladorAlbum {
     @RequestMapping(value = "GeneraQRAlbum.htm", method = RequestMethod.GET)
     public ModelAndView qr(HttpServletRequest request) throws WriterException, FileNotFoundException, IOException, InterruptedException {
         //Se Extrae la imagen desde la ubicacion desde el disco local "C:"
-        File qr = new File("C:\\Users\\hp\\Documents\\NetBeansProjects\\Diseño de Sistemas\\Musica\\MusicaSpring\\web\\img\\QR.png");
+        File qr = new File("C:\\Users\\raul0\\Documents\\NetBeansProjects\\Spring\\Musica Servidor\\MusicaSpring\\web\\img\\QR.png");
 
         //Se realiza una impresion de datos del registro
         idAlbum = Integer.parseInt(request.getParameter("idAlbum"));
